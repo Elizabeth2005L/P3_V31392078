@@ -1,0 +1,50 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API",
+    "version": "1.0.0",
+    "description": "Documentación de la API"
+  },
+  "paths": {
+    "/api/about": {
+      "get": {
+        "summary": "Obtiene información sobre el estuadiante",
+        "responses": {
+          "200": {
+            "description": "Información del estudiante",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "info": {
+                      "type": "string",
+                      "description": "Información general"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ping": {
+      "get": {
+        "summary": "Verifica si el servidor está activo",
+        "responses": {
+          "200": {
+            "description": "Servidor activo",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }

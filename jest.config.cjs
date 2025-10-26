@@ -1,0 +1,7 @@
+exports = {
+  preset: 'ts-jest',
+  testEnvironment: 'node',
+  transform: {
+    '^.+\\.js$': 'babel-jest'
+  }
+};
