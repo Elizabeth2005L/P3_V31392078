@@ -6,16 +6,24 @@ import swaggerDocument from './swagger.json' with { type: 'json' }
 const swaggerOptions = {}
 const app = express();
 
+// Middlewares
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 app.get("/", (req, res) => {
-  return res.json({
-    message: "Bienvenido al servidor",
-  });
+    return res.json({
+        message: "Bienvenido al servidor",
+        endpoints: {
+            documentation: "/api-docs",
+            api: "/api"
+        }
+    });
 });
 
-// Swagger
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument, swaggerOptions))
+// Swagger UI
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument, swaggerOptions));
 
-app.use("/api",routes)
+// Rutas
+app.use("/api", routes);
 
-export default app
-
+export default app;
