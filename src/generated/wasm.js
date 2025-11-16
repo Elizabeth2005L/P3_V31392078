@@ -99,6 +99,35 @@ exports.Prisma.UserScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.PerfumesScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  price: 'price',
+  stock: 'stock',
+  slug: 'slug',
+  gender: 'gender',
+  presentation: 'presentation',
+  brand: 'brand',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  categoriesid: 'categoriesid'
+};
+
+exports.Prisma.CategoriesScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  slug: 'slug',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.TagsScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -111,7 +140,10 @@ exports.Prisma.NullsOrder = {
 
 
 exports.Prisma.ModelName = {
-  User: 'User'
+  User: 'User',
+  perfumes: 'perfumes',
+  categories: 'categories',
+  tags: 'tags'
 };
 /**
  * Create the Client
@@ -124,7 +156,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\Fany\\OneDrive\\Escritorio\\P3_V31392078\\src\\generated",
+      "value": "F:\\Users\\Cesar Alvarado\\Downloads\\P3_V31392078-main\\src\\generated",
       "fromEnvVar": null
     },
     "config": {
@@ -138,7 +170,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\Fany\\OneDrive\\Escritorio\\P3_V31392078\\prisma\\schema.prisma",
+    "sourceFilePath": "F:\\Users\\Cesar Alvarado\\Downloads\\P3_V31392078-main\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -160,13 +192,13 @@ const config = {
       }
     }
   },
-  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/generated\"\n}\n\ndatasource db {\n  provider = \"sqlite\"\n  url      = \"file:./dev.db\"\n}\n\nmodel User {\n  id        String   @id @default(uuid())\n  email     String   @unique\n  nombre    String?\n  apellido  String?\n  password  String\n  rol       String   @default(\"USER\")\n  createdAt DateTime @default(now())\n}\n",
-  "inlineSchemaHash": "527a1efc4c981cea84ed3a488f6f5a45100a7595a73170b1d3f439b7f0c38bcf",
+  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/generated\"\n}\n\ndatasource db {\n  provider = \"sqlite\"\n  url      = \"file:./dev.db\"\n}\n\nmodel User {\n  id        String   @id @default(uuid())\n  email     String   @unique\n  nombre    String?\n  apellido  String?\n  password  String\n  rol       String   @default(\"USER\")\n  createdAt DateTime @default(now())\n}\n\nmodel perfumes {\n  id           String     @id @default(uuid())\n  name         String\n  price        Float\n  stock        Int\n  slug         String\n  gender       String\n  presentation String\n  brand        String\n  createdAt    DateTime   @default(now())\n  updatedAt    DateTime   @updatedAt\n  tags         tags[]\n  categories   categories @relation(fields: [categoriesid], references: [id])\n  categoriesid String\n}\n\nmodel categories {\n  id        String     @id @default(uuid())\n  name      String\n  slug      String\n  createdAt DateTime   @default(now())\n  updatedAt DateTime   @updatedAt\n  perfumes  perfumes[]\n}\n\nmodel tags {\n  id        String     @id @default(uuid())\n  name      String\n  createdAt DateTime   @default(now())\n  updatedAt DateTime   @updatedAt\n  perfumes  perfumes[]\n}\n",
+  "inlineSchemaHash": "6ab6f8d5006099a603c9b33f9cb2dc59e08bb8dcdc60f4fa9de7205cd016b5e9",
   "copyEngine": true
 }
 config.dirname = '/'
 
-config.runtimeDataModel = JSON.parse("{\"models\":{\"User\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"nombre\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"apellido\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"password\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"rol\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"User\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"nombre\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"apellido\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"password\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"rol\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"perfumes\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"price\",\"kind\":\"scalar\",\"type\":\"Float\"},{\"name\":\"stock\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"slug\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"gender\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"presentation\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"brand\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"tags\",\"kind\":\"object\",\"type\":\"tags\",\"relationName\":\"perfumesTotags\"},{\"name\":\"categories\",\"kind\":\"object\",\"type\":\"categories\",\"relationName\":\"categoriesToperfumes\"},{\"name\":\"categoriesid\",\"kind\":\"scalar\",\"type\":\"String\"}],\"dbName\":null},\"categories\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"slug\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"perfumes\",\"kind\":\"object\",\"type\":\"perfumes\",\"relationName\":\"categoriesToperfumes\"}],\"dbName\":null},\"tags\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"perfumes\",\"kind\":\"object\",\"type\":\"perfumes\",\"relationName\":\"perfumesTotags\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
 defineDmmfProperty(exports.Prisma, config.runtimeDataModel)
 config.engineWasm = {
   getRuntime: async () => require('./query_engine_bg.js'),
