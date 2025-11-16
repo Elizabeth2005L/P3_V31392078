@@ -157,7 +157,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "F:\\Users\\Cesar Alvarado\\Downloads\\P3_V31392078-main\\src\\generated",
+      "value": "C:\\Users\\Fany\\OneDrive\\Escritorio\\P3_V31392078\\src\\generated",
       "fromEnvVar": null
     },
     "config": {
@@ -171,7 +171,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "F:\\Users\\Cesar Alvarado\\Downloads\\P3_V31392078-main\\prisma\\schema.prisma",
+    "sourceFilePath": "C:\\Users\\Fany\\OneDrive\\Escritorio\\P3_V31392078\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
