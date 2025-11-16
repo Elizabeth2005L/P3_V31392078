@@ -127,6 +127,35 @@ exports.Prisma.UserScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.PerfumesScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  price: 'price',
+  stock: 'stock',
+  slug: 'slug',
+  gender: 'gender',
+  presentation: 'presentation',
+  brand: 'brand',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  categoriesid: 'categoriesid'
+};
+
+exports.Prisma.CategoriesScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  slug: 'slug',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.TagsScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -139,7 +168,10 @@ exports.Prisma.NullsOrder = {
 
 
 exports.Prisma.ModelName = {
-  User: 'User'
+  User: 'User',
+  perfumes: 'perfumes',
+  categories: 'categories',
+  tags: 'tags'
 };
 
 /**

@@ -3,7 +3,7 @@
 
 generator client {
   provider = "prisma-client-js"
-  output = "../src/generated"
+  output   = "../src/generated"
 }
 
 datasource db {
@@ -11,13 +11,45 @@ datasource db {
   url      = "file:./dev.db"
 }
 
-
 model User {
   id        String   @id @default(uuid())
   email     String   @unique
   nombre    String?
   apellido  String?
   password  String
-  rol       String     @default("USER")
+  rol       String   @default("USER")
   createdAt DateTime @default(now())
+}
+
+model perfumes {
+  id           String     @id @default(uuid())
+  name         String
+  price        Float
+  stock        Int
+  slug         String
+  gender       String
+  presentation String
+  brand        String
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  tags         tags[]
+  categories   categories @relation(fields: [categoriesid], references: [id])
+  categoriesid String
+}
+
+model categories {
+  id        String     @id @default(uuid())
+  name      String
+  slug      String
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  perfumes  perfumes[]
+}
+
+model tags {
+  id        String     @id @default(uuid())
+  name      String
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  perfumes  perfumes[]
 }
